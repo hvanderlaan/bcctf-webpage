@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Highscore{% endblock %}
+
+{% block content %}
+<h1>🏆 Highscore</h1>
+
+<div class="card">
+    <ul class="scoreboard">
+    {% for u in users if not 'admin' in u.username %}
+        <li>
+            <span>
+                {% if loop.index == 1 %}🥇{% elif loop.index == 2 %}🥈{% elif loop.index == 3 %}🥉{% endif %}
+                {{ u.username }}
+                {% if u.solved > 1 %} 🎗️{% endif %}
+            </span>
+            <span>{{ u.score }} pts</span>
+        </li>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}

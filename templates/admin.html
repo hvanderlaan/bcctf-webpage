@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Admin Panel{% endblock %}
+
+{% block content %}
+<h2>⚙️ Admin Panel</h2>
+
+<div class="card">
+    <h3>Nieuwe Challenge</h3>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.title(class="input", placeholder="Titel") }}
+        {{ form.description(class="input", placeholder="Beschrijving") }}
+        {{ form.flag(class="input", placeholder="FLAG{...}") }}
+        {{ form.points(class="input", placeholder="Punten") }}
+        {{ form.submit(class="btn") }}
+    </form>
+</div>
+
+<div class="card">
+    <h3>Bestaande Challenges</h3>
+    <ul>
+        {% for c in challenges %}
+            <li>{{ c.title }} ({{ c.points }} pts)</li>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock %}

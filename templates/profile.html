@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Profiel{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>👤 {{ user.username }}</h2>&nbsp;<img class="profile-pic" src="{{ url_for('static', filename='uploads/' + user.profile_pic) }}">
+    <p>Score: <strong>{{ user.score }}</strong></p>
+    <p>Flags opgelost: <strong>{{ user.solved }}</strong></p>
+    <a class="btn" href="{{ url_for('user.change_password') }}">Wijzig wachtwoord</a>&nbsp;<a class="btn" href="{{ url_for('user.change_profile_pic') }}">Wijzig profielfoto</a>
+</div>
+
+<h3>Challenges</h3>
+<div class="grid">
+{% for c in challenges %}
+    <div class="card">
+        <h4>{{ c.title }}</h4>
+        <p>{{ c.points }} punten</p>
+        <a class="btn" href="/challenge/{{ c.id }}">Open</a>
+    </div>
+{% endfor %}
+</div>
+
+{% if user.is_admin %}
+    <a class="admin-link" href="/admin">⚙️ Admin Panel</a>
+{% endif %}
+{% endblock %}

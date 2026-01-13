@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% block title %}Register{% endblock %}
+
+{% block content %}
+<div class="card small">
+    <h2>Registreren</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.username(class="input", placeholder="Username") }}
+        {{ form.password(class="input", placeholder="Password") }}
+        {{ form.submit(class="btn") }}
+    </form>
+</div>
+{% endblock %}

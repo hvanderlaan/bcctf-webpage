@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Challenge{% endblock %}
+
+{% block content %}
+<div class="card">
+    <h2>{{ chal.title }}</h2>
+    <p>{{ chal.description }}</p>
+    <p><strong>{{ chal.points }} punten</strong></p>
+
+    {% if already_solved %}
+    <p style="color:#facc15;">✅ Je hebt deze challenge al opgelost!</p>
+    {% else %}
+    <form method="POST">
+        {{ form.hidden_tag() }}
+        {{ form.flag(class="input", placeholder="FLAG{...}") }}
+        {{ form.submit(class="btn") }}
+    </form>
+    {% endif %}
+</div>
+{% endblock %}
