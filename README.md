@@ -5,7 +5,7 @@ Website for CTF challenges for Brightcubes
 ## Usage
 
 ```bash
-git clone https://github.com/hvanderlaan/ctf-web.git
+git clone https://github.com/hvanderlaan/bcctf-webpage.git
 cd ctf-web
 python3 -m venv .venv
 source .venv/bin/activate
